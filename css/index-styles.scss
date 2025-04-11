@@ -1,0 +1,123 @@
+$maxWidth: 100%;
+$white: rgb(255,255,255);
+$orange: rgb(223, 152, 20);
+$black: rgb(0,0,0);
+$mainFontFamily: "Lexend", Arial, Helvetica, sans-serif;
+
+body {
+    font-family: $mainFontFamily;
+}
+@mixin productBlock($templatecols){
+    display: grid;
+    box-sizing:border-box;
+    grid-template-columns: $templatecols;
+    width: 80%;
+
+    gap: 5%;
+    margin: 0 auto;
+    padding: 20px;
+}
+@mixin basicFlex {
+    display: flex;
+    align-items: center;
+}
+%link {
+    color: $white;
+    text-decoration: none;
+}
+.header {
+    @include basicFlex();
+    flex-direction: row;
+    box-sizing: border-box;
+    background-color: rgb(51, 132, 207);
+
+    background-image: url("../img/banner_img.png");
+    background-repeat: no-repeat;
+    background-position-y: 90%;
+
+    width: $maxWidth;
+
+    .header__logo {
+        width: 15%;
+    }
+    
+    .header__nav {
+        display:flex;
+        justify-content: flex-end;
+        gap: 15px;
+
+        font-size: 1.6rem;
+        font-weight: 900;
+        text-shadow: 2px 2px 5px $black;
+    }
+    .header__link {
+        @extend %link
+    }
+}
+
+.products {
+    @include productBlock(repeat(auto-fill, minmax(250px, 1fr)));
+
+    .product__img {
+        width: $maxWidth;
+    }
+
+    .product__info {
+        @include basicFlex();
+        height: 30px;
+        width: $maxWidth;
+    }
+    .product__info__price {
+        width: 55px;
+    }
+    .product__info__btn {
+        font-family: "Lexend", Arial, Helvetica, sans-serif;
+        border-color: rgb(44, 21, 255);
+        border-radius: 10px;
+        background-color: $orange;
+        width: $maxWidth / 2;
+        transition: all .15s linear;
+    }
+}
+/* media queries */
+
+@media (max-width: 1200px) {
+    .header {
+        background-position-y: 60%;
+
+        .header__nav {
+            gap: 10px;
+            justify-content: center;
+            flex-direction: column;
+            padding-left: 70%;
+        }
+    }
+    
+}
+
+@media (max-width: 820px) {
+    .products {
+    @include productBlock(1fr)
+    }
+    .header {
+        background-position-y: 20%;
+        background-position-x: 20%;
+
+        .header__logo {
+            width: 25%;
+        }
+
+        .header__nav {
+            gap: 10px;
+            padding-left: 50%;
+        }
+    }
+}
+
+@media (hover:hover) {
+    .product__info__btn:hover {
+        background-color: $white;
+        border-color: $orange;
+    }
+}
+
