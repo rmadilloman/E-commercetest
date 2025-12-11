@@ -7,73 +7,91 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/index-styles.css">
+    <script src="js/cart.js" defer></script>
     <title>ecommerce</title>
 </head>
 <body>
     <header class="header">
-        <img class="header__logo" src="./img/logo.png">
+        <img class="header__logo" src="./img/logo.png" alt="Nerf Logo">
         <nav class="header__nav">
             <a class="header__link" href="#">About us</a>
             <a class="header__link" href="#">Contact</a>
+            <div class="header__cart-container">
+                <img class="header__cartBtn" src="Icons/shopping-cart.svg" alt="Cart">
+                <span class="header__cart-badge" id="badge">0</span>
+            </div>
         </nav>
     </header>
 
+    <!-- CART SIDEBAR (hidden by default) -->
+    <section class="cart-sidebar" id="cartSidebar">
+        <div class="cart-sidebar__header">
+            <h2>Your Cart</h2>
+            <button class="cart-sidebar__close">&times;</button>
+        </div>
+        <div class="cart-sidebar__items" id="cartItems">
+            <!-- JS places stuff here -->
+            <p class="cart-empty" id="emptyCartText">Your cart is empty</p>
+        </div>
+    </section>
+    <!-- Overlay when cart is open -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- MAIN PRODUCTS -->
     <main class="products">
-
-        <article class="products__product">
-                <img class="product__img" src="img/strongarm.jpg">
-                <div class="product__info">
-                    <h3 class="product__info__name">N-Strike Elite Strongarm</h3>
-                    <p class="product__info__price">$4.99 USD</p>
-                    <button class="product__info__btn">Purchase</button>
-                </div>
-        </article>
-
-        <article class="products__product">
-            <img class="product__img" src="./img/rapidstrike_img.png">
-            <div class="product__info">
-                <h3 class="product__info__name">N-Strike Elite rapidstrike CS-18</h3>
-                <p class="product__info__price">$39.99 USD</p>
-                <button class="product__info__btn">Purchase</button>
-            </div>
-        </article>
-
-        <article class="products__product">
-            <img class="product__img" src="./img/hyperfire.jpg">
-            <div class="product__info">
-                <h3 class="product__info__name">N-Strike Elite Hyperfire CS-25</h3>
-                <p class="product__info__price">$65.99 USD</p>
-                <button class="product__info__btn">Purchase</button>
-            </div>
-        </article>
-
-        <article class="products__product">
-            <img class="product__img" src="img/strongarm.jpg">
+        <article class="products__product" data-name="N-Strike Elite Strongarm" data-price="4.99">
+            <img class="product__img" src="img/strongarm.jpg" alt="Strongarm">
             <div class="product__info">
                 <h3 class="product__info__name">N-Strike Elite Strongarm</h3>
                 <p class="product__info__price">$4.99 USD</p>
-                <button class="product__info__btn">Purchase</button>
+                <button class="product__info__btn add-to-cart" onclick="addToCart('N-Strike Elite Strongarm', 4.99)">Add to Cart</button>
             </div>
-    </article>
+        </article>
 
-    <article class="products__product">
-        <img class="product__img" src="./img/rapidstrike_img.png">
-        <div class="product__info">
-            <h3 class="product__info__name">N-Strike Elite rapidstrike CS-18</h3>
-            <p class="product__info__price">$39.99 USD</p>
-            <button class="product__info__btn">Purchase</button>
-        </div>
-    </article>
+        <article class="products__product" data-name="N-Strike Elite rapidstrike CS-18" data-price="39.99">
+            <img class="product__img" src="./img/rapidstrike_img.png" alt="Rapidstrike">
+            <div class="product__info">
+                <h3 class="product__info__name">N-Strike Elite rapidstrike CS-18</h3>
+                <p class="product__info__price">$39.99 USD</p>
+                <button class="product__info__btn add-to-cart" onclick="addToCart('N-Strike Elite rapidstrike CS-18', 39.99)">Add to Cart</button>
+            </div>
+        </article>
 
-    <article class="products__product">
-        <img class="product__img" src="./img/hyperfire.jpg">
-        <div class="product__info">
-            <h3 class="product__info__name">N-Strike Elite Hyperfire CS-25</h3>
-            <p class="product__info__price">$65.99 USD</p>
-            <button class="product__info__btn">Purchase</button>
-        </div>
-    </article>
+        <article class="products__product" data-name="N-Strike Elite Hyperfire CS-25" data-price="65.99">
+            <img class="product__img" src="./img/rapidstrike_img.png" alt="Rapidstrike">
+            <div class="product__info">
+                <h3 class="product__info__name">N-Strike Elite Hyperfire CS-25</h3>
+                <p class="product__info__price">$65.99 USD</p>
+                <button class="product__info__btn add-to-cart" onclick="addToCart('N-Strike Elite Hyperfire CS-25', 65.99)">Add to Cart</button>
+            </div>
+        </article>
+        <!-- copies -->
+        <article class="products__product" data-name="N-Strike Elite Strongarm" data-price="4.99">
+            <img class="product__img" src="img/strongarm.jpg" alt="Strongarm">
+            <div class="product__info">
+                <h3 class="product__info__name">N-Strike Elite Strongarm</h3>
+                <p class="product__info__price">$4.99 USD</p>
+                <button class="product__info__btn add-to-cart" onclick="addToCart('N-Strike Elite Strongarm', 4.99)">Add to Cart</button>
+            </div>
+        </article>
 
+        <article class="products__product" data-name="N-Strike Elite rapidstrike CS-18" data-price="39.99">
+            <img class="product__img" src="./img/rapidstrike_img.png" alt="Rapidstrike">
+            <div class="product__info">
+                <h3 class="product__info__name">N-Strike Elite rapidstrike CS-18</h3>
+                <p class="product__info__price">$39.99 USD</p>
+                <button class="product__info__btn add-to-cart" onclick="addToCart('N-Strike Elite rapidstrike CS-18', 39.99)">Add to Cart</button>
+            </div>
+        </article>
+
+        <article class="products__product" data-name="N-Strike Elite Hyperfire CS-25" data-price="65.99">
+            <img class="product__img" src="./img/rapidstrike_img.png" alt="Rapidstrike">
+            <div class="product__info">
+                <h3 class="product__info__name">N-Strike Elite Hyperfire CS-25</h3>
+                <p class="product__info__price">$65.99 USD</p>
+                <button class="product__info__btn add-to-cart" onclick="addToCart('N-Strike Elite Hyperfire CS-25', 65.99)">Add to Cart</button>
+            </div>
+        </article>
     </main>
 </body>
 </html>
