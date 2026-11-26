@@ -16,7 +16,7 @@ Simple one page front-end ecommerce layout that features a cart with item storin
 Gitgub page deployment: https://rmadilloman.github.io/E-commercetest/
 
 ### Repository clone
-1. Clone the backend repository:
+1. Clone the repository:
    ```bash
    git clone (https://github.com/rmadilloman/E-commercetest)
 
