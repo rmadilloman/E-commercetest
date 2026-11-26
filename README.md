@@ -1,7 +1,7 @@
 # Basic Front-end Ecommerce
 
 ## Description
-Simple one page front-end ecommerce layout that features a cart with item purchase and removal, built with responsive-design and media queries in mind.
+Simple one page front-end ecommerce layout that features a cart with item storing, built with responsive-design and media queries in mind.
 
 ## Technologies
 - HTML
@@ -10,9 +10,12 @@ Simple one page front-end ecommerce layout that features a cart with item purcha
 
 ## Features
 - One page design with sliding cart
-- Cart adding / removal
+- Cart adding
 
 ## How to run
+Gitgub page deployment: https://rmadilloman.github.io/E-commercetest/
+
+### Repository clone
 1. Clone the backend repository:
    ```bash
    git clone (https://github.com/rmadilloman/E-commercetest)
